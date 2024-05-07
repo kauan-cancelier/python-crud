@@ -1,1 +1,3 @@
 # initialization
+
+print('hello world')
