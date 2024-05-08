@@ -19,9 +19,33 @@ while opcao != 4:
     opcao = int(input("Escolha uma opção: "))
     if opcao == 1:
         nome = input('Nome: ')
+        tamanho_nome = nome.strip()
+        while len(tamanho_nome) <=0:
+            print("\n Digite um nome: ")
+            nome = input('Nome: ')
+            tamanho_nome = nome.strip()
+
         sobrenome = input('Sobrenome: ')
+        tamanho_sobrenome = sobrenome.strip()
+        while len(tamanho_sobrenome) <=0:
+            print("\n Digite um sobrenome: ")
+            sobrenome= input('Sobrenome: ')
+            tamanho_sobrenome = sobrenome.strip()
+
         email = input('E-mail: ')
+        tamanho_email = email.strip()
+        while len(tamanho_email) <=0:
+            print("\n Digite um e-mail: ")
+            email = input('E-mail: ')
+            tamanho_email = email.strip()
+
         telefone = input('Telefone: ')
+        tamanho_telefone = telefone.strip()
+        while len(tamanho_telefone) <=0:
+            print("\n Digite um telefone: ")
+            telefone = input('Telefone: ')
+            tamanho_telefone = telefone.strip()
+
         p1 = Pessoa(nome, sobrenome, email, telefone)
         pessoas.append(p1)
         print('Pessoa adicionada com SUCESSO')
@@ -40,9 +64,6 @@ while opcao != 4:
         p.telefone = input('Telefone: ')
         print(pessoas[escolhida].nome)
 
-       
-
-    
     print(menu)
 
     
