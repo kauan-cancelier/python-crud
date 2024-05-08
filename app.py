@@ -31,6 +31,18 @@ while opcao != 4:
           p = pessoas[c]
           print(f"\n cod: {c}\n nome: {p.nome}\n sobrenome: {p.sobrenome}\n email: {p.email}\n telefone: {p.telefone}\n")
           
+    elif opcao == 3:
+        escolhida = int(input('informe aqui a pessoa a ser editada: '))
+        p= pessoas[escolhida]
+        p.nome = input('Nome: ')
+        p.sobrenome = input('Sobrenome: ')
+        p.email = input('E-mail: ')
+        p.telefone = input('Telefone: ')
+        print(pessoas[escolhida].nome)
+
+       
+
+    
     print(menu)
 
     
