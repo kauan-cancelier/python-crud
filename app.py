@@ -24,26 +24,20 @@ class Contato:
         self.numero = numero
 
     def exibir_contato(self):
-        print(f'\nCódigo: {self.id}')
-        print(f'Nome completo: {self.nome_completo}')
-        print(f'E-mail: {self.email}')
-        print(f'Telefone: {self.numero}\n')
+        print(f'Código: {self.id}')
+        print(f' Nome completo: {self.nome_completo}')
+        print(f' E-mail: {self.email}')
+        print(f' Telefone: {self.numero}\n')
 
 contatos = []
 
-def formulario(contato: Contato):
-    print('------------------------------------')
-    print('\nCadastro de contatos: \n')
+def inserir():
+    contato = Contato()
     contato.set_nome_completo(input('Digite o nome completo: '))
     contato.set_email(input('Digite o e-mail: '))
     contato.set_numero(input('Digite o número de telefone: '))
-    return contato
-
-def inserir():
-    p = Contato()
-    p = formulario(p)
-    p.id = len(contatos) + 1
-    contatos.append(p)
+    contato.id = len(contatos) + 1
+    contatos.append(contato)
     print('\nContato cadastrado com sucesso!')
 
 def mostrar_contatos():
@@ -55,7 +49,9 @@ def mostrar_contatos():
             p.exibir_contato()
 
 def editar(contato: Contato):
-    formulario(contato)
+    contato.set_nome_completo(input(f'Digite o nome completo: Anterior:({contato.nome_completo}): '))
+    contato.set_email(input(f'Digite o e-mail: Anterior({contato.email}): '))
+    contato.set_numero(input(f'Digite o número de telefone: Anterior({contato.numero}): '))
     print('Contato editado com sucesso!')
 
 def menu():
