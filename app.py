@@ -24,13 +24,16 @@ class Contato:
         self.numero = numero
 
     def exibir_contato(self):
-        print(f'\nCódigo: {self.id} \n  Nome completo: {self.nome_completo}\n  Telefone: {self.numero}\n')
+        print(f'\nCódigo: {self.id}')
+        print(f'Nome completo: {self.nome_completo}')
+        print(f'E-mail: {self.email}')
+        print(f'Telefone: {self.numero}\n')
 
 contatos = []
 
-opcao_escolhida = 0
-
 def formulario(contato: Contato):
+    print('------------------------------------')
+    print('\nCadastro de contatos: \n')
     contato.set_nome_completo(input('Digite o nome completo: '))
     contato.set_email(input('Digite o e-mail: '))
     contato.set_numero(input('Digite o número de telefone: '))
@@ -41,10 +44,11 @@ def inserir():
     p = formulario(p)
     p.id = len(contatos) + 1
     contatos.append(p)
+    print('\nContato cadastrado com sucesso!')
 
-def mostrar_contato():
+def mostrar_contatos():
     if len(contatos) == 0:
-        print("\nNenhuma contato cadastrado.\n")
+        print("\nNenhum contato cadastrado.\n")
     else:
         print('\nLista de contatos\n')
         for p in contatos:
@@ -52,38 +56,43 @@ def mostrar_contato():
 
 def editar(contato: Contato):
     formulario(contato)
+    print('Contato editado com sucesso!')
 
 def menu():
-    print('\n######################')
-    print('Menu')
-    print(f'1 - Novo contato \n2 - Ver contatos \n3 - Editar contato \n4 - Encerrar')
-    print('######################')
+    print('\nMenu')
+    print('1 - Novo contato')
+    print('2 - Ver contatos')
+    print('3 - Editar contato')
+    print('4 - Encerrar\n')
     try:
         return int(input('Escolha uma opção do menu: '))
     except:
-        print('Digite uma opção válida. ')
+        print('\nDigite uma opção válida.')
+        return 0
+
+opcao_escolhida = 0
 
 while opcao_escolhida != 4:
     opcao_escolhida = menu()
     if opcao_escolhida == 1:
         inserir()
-        print('Contato cadastrado com sucesso!')
     elif opcao_escolhida == 2:
-        mostrar_contato()
+        mostrar_contatos()
     elif opcao_escolhida == 3:
         if len(contatos) == 0:
             print("Não há contatos para editar.")
         else:
-            mostrar_contato()
-            quem_editar = int(input('Digite o código da contato que deseja editar: '))
-            if quem_editar <= 0 or quem_editar > len(contatos):
-                print("Código de contato inválido.")
-            else:
-                contato_editar = contatos[quem_editar - 1]
-                editar(contato_editar)
-                print('Contato editado com sucesso!')
-
-
-
-print('Saindo...')
-
+            mostrar_contatos()
+            try:
+                quem_editar = int(input('Digite o código do contato que deseja editar: '))
+                if quem_editar <= 0 or quem_editar > len(contatos):
+                    print("Código de contato inválido.")
+                else:
+                    contato_editar = contatos[quem_editar - 1]
+                    editar(contato_editar)
+            except ValueError:
+                print("Por favor, digite um número válido.")
+    elif opcao_escolhida == 4:
+        print('Saindo...')
+    else:
+        print('Opção inválida.')
